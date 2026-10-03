@@ -1,0 +1,2 @@
+*.sh text eol=lf
+allowed_signers text eol=lf
