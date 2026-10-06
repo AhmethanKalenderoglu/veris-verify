@@ -7,6 +7,10 @@
 
 VERIS projesine ait sitelerin (ahmethankalenderoglu.com, veris.vote, canlisecim.com, api.canlisecim.com) imzasını doğrulayan betik.
 
+> **Geçici durum (Ekim 2026):** Clearnet adresleri Cloudflare üzerinden sunulduğu için Cloudflare sayfalara kendi
+> kodunu ekleyebiliyor ve doğrulama `hash'i tutmuyor` hatası verebiliyor. Bu, imzaların bozulduğu anlamına gelmez.
+> Şimdilik doğrulamayı [rehberdeki](https://ahmethankalenderoglu.com/dogrulama) **.onion adresleri** üzerinden yapın.
+
 Betik **kendi imzasıyla** dağıtılır. Doğrudan `curl | bash` ile çalıştırmayın; önce indirin, okuyun, imzasını doğrulayın.
 
 ## Kullanım
@@ -65,6 +69,10 @@ canlisecim.com, api.canlisecim.com) carries a valid signature from the project's
 Every signed page ends with a `VERIS-SIGNATURE` block. The script hashes everything above that block with
 SHA-256, compares it with the `content-sha256` value in the block, and verifies the SSH signature over that
 hash (namespace `veris-site`) against the pinned public key.
+
+> **Temporary notice (October 2026):** the clearnet sites are served through Cloudflare, which can inject its own
+> code into pages, so verification may fail with a hash mismatch. The signatures themselves are intact. For now, verify
+> through the **.onion addresses** listed in the [guide](https://ahmethankalenderoglu.com/dogrulama).
 
 The script is distributed with its own signature. Do not pipe it into `bash`: download it, read it, verify it.
 
