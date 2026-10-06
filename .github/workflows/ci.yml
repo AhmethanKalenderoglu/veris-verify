@@ -1,0 +1,13 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ShellCheck
+        run: shellcheck verify.sh tests/run.sh
+      - name: Testler
+        run: bash tests/run.sh
+      - name: Betik imzasi
+        run: ssh-keygen -Y verify -f allowed_signers -I ahmethan@ahmethankalenderoglu.com -n veris-verify -s verify.sh.sig < verify.sh
